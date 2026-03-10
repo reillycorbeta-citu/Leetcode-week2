@@ -1,20 +1,3 @@
-class Solution {
-public:
-    int romanToInt(string s) {
-        unordered_map<char,int> m = {
-            {'I',1},{'V',5},{'X',10},{'L',50},
-            {'C',100},{'D',500},{'M',1000}
-        };
-        
-        int result = 0;
-        
-        for(int i = 0; i < s.size(); i++) {
-            if(i + 1 < s.size() && m[s[i]] < m[s[i+1]])
-                result -= m[s[i]];
-            else
-                result += m[s[i]];
-        }
-        
-        return result;
-    }
-};
+Roman to Integer
+Easy
+Roman numerals use letters like I, V, X, L, C, D, and M to represent numbers, and each of these symbols has a fixed value. In most cases, the numbers are written from left to right starting with the largest value and moving to the smallest, so we simply add their values together. However, Roman numerals also use a small trick where a smaller symbol placed before a larger one means we subtract it instead of adding it, such as IV representing 4 or IX representing 9. To convert a Roman numeral into an integer, we go through the string one character at a time, compare each symbol with the one next to it, and decide whether to add or subtract its value. By repeating this process until the end of the string, we can easily calculate the final integer value.
